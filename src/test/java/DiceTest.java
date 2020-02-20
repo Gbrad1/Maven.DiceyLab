@@ -42,12 +42,20 @@ public class DiceTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    /*@Test
     public void testDiceRoll() {
         Dice roll = new Dice(null);
-        Integer actual = roll.rollDice();
+        Integer actual = roll.tossAndSum();
         Integer expected = (int)(Math.random()*7);
         Assert.assertTrue(expected > 0 && expected < 7);
     }
+
+    @Test
+    public void tossAndSumTest() {
+        Dice dice = new Dice(2);
+        Integer expectedTossedSum = 2;
+        Integer actual = dice.tossAndSum();
+        Assert.assertEquals(expectedTossedSum, actual);
+    }*/
 
 }

@@ -1,18 +1,20 @@
 import java.util.logging.Logger;
 
 public class Dice {
-    Integer randomToss;
-
+    Integer numberOfDiceToToss;
 
     private static final Logger LOGGER = Logger.getLogger(Dice.class.getName());
 
-    public Dice (Integer newToss) {
-        this.randomToss = newToss;
+    public Dice (Integer newNumToToss) {
+        this.numberOfDiceToToss = newNumToToss;
     }
 
-    public Integer rollDice () {
-        Integer diceOutPut = (int)(Math.random() * 7);
-        return diceOutPut;
+    public Integer maxNum() {
+        return numberOfDiceToToss * 6;
+    }
+
+    public Integer leastNum() {
+        return numberOfDiceToToss;
     }
 
 }
