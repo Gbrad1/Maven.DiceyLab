@@ -12,12 +12,14 @@ public class Bins {
     public Bins(Integer minBin, Integer maxBin) {
         this.minPossibleDieOutCome = minBin;
         this.maxPossibleDieOutcome = maxBin;
-        for (int i = minBin; i <= maxBin; i++) {
+        for (int i = 0; i <= maxBin; i++) {
             sumCount.add(0);
         }
     }
 
-    public void fillBin() {
-
+    public void incrementBin(Integer index) {
+        Integer a = sumCount.get(index);
+        a++;
+        sumCount.set(index, a);
     }
 }

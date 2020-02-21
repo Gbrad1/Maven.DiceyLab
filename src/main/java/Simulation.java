@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 public class Simulation {
     private Integer numberOfDiesToThrow;
     private Integer numberOfTosses;
+
     Bins bin;
     Dice dice;
 
@@ -18,27 +19,31 @@ public class Simulation {
     }
 
     public void runSimulation() {
-
         Random randomNumber = new Random();
 
         for (int i = 0; i < numberOfTosses; i++) {
-            int sum = 0;
-            for (int j = 0; j < numberOfDiesToThrow; j++) {
-                 int random = randomNumber.nextInt(6) + 1;
-                 sum += random;
-            }
-            for (int k = 0; k < bin.sumCount.size(); k++) {
-                if (numberOfDiesToThrow + k == sum) {
-                    bin.sumCount.set(k, (bin.sumCount.get(k) + 1));
-                }
-                bin.sumCount.add(sum + k);
-            }
+            bin.incrementBin(dice.tossAndSum());
         }
     }
 
-    /*public void printResults() {
-       // LOGGER.info();
-    }*/
+    public void printResults() {
+        LOGGER.info("\n***\n" + "Simulation of " + numberOfDiesToThrow +
+               " dice tossed for " + numberOfTosses + " times.\n***");
+        String toReturn = "\n";
+        for (int i = numberOfDiesToThrow; i <= numberOfDiesToThrow * 6; i++) {
+            double percentage = (double)(bin.sumCount.get(i)) / (double)(numberOfTosses);
+            int starCount = bin.sumCount.get(i) / 10000;
+            String actualStar = "";
+            String formatted = String.format("%3d", i);
+            String formattedNumOfRolls = String.format("%10d", bin.sumCount.get(i));
+            String formattedPercentage = String.format("%.2f", percentage);
+            for (int j = 0; j < starCount; j++) {
+                actualStar += "*";
+            }
+            toReturn += formatted + " : " + formattedNumOfRolls + ": " + formattedPercentage + " " + actualStar + "\n";
+        }
+        LOGGER.info(toReturn);
+    }
 
     public void setNumberOfDiesToThrow(Integer newValue) {
         this.numberOfDiesToThrow = newValue;
@@ -59,9 +64,8 @@ public class Simulation {
 
     public static void main(String[] args) {
         Simulation diceToRoll = new Simulation(2, 1000000);
-        Dice dice1 = new Dice(diceToRoll.numberOfDiesToThrow);
         diceToRoll.runSimulation();
-        //diceToRoll.printResults();
+        diceToRoll.printResults();
     }
 
 }

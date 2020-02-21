@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.logging.Logger;
 
 public class Dice {
@@ -15,6 +16,15 @@ public class Dice {
 
     public Integer leastNum() {
         return numberOfDiceToToss;
+    }
+
+    public Integer tossAndSum() {
+        Integer sum = 0;
+        Random randomNumber = new Random();
+        for (int i = 0; i < numberOfDiceToToss; i++) {
+            sum += randomNumber.nextInt(6) + 1;
+        }
+        return sum;
     }
 
 }
