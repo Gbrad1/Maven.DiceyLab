@@ -5,11 +5,12 @@ public class Bins {
     private Integer minPossibleDieOutCome;
     private Integer maxPossibleDieOutcome;
 
-    ArrayList<Integer> sumCount = new ArrayList<>();
+    public ArrayList<Integer> sumCount;
 
     private static final Logger LOGGER = Logger.getLogger(Bins.class.getName());
 
     public Bins(Integer minBin, Integer maxBin) {
+        sumCount = new ArrayList<>();
         this.minPossibleDieOutCome = minBin;
         this.maxPossibleDieOutcome = maxBin;
         for (int i = 0; i <= maxBin; i++) {
