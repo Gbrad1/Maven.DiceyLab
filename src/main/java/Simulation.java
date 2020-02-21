@@ -36,9 +36,9 @@ public class Simulation {
         }
     }
 
-    public void printResults() {
-
-    }
+    /*public void printResults() {
+       // LOGGER.info();
+    }*/
 
     public void setNumberOfDiesToThrow(Integer newValue) {
         this.numberOfDiesToThrow = newValue;
